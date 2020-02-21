@@ -1,28 +1,38 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="html">
+  <div>
+    <h1>Amiibo!!</h1>
+  <amiibo-list :amiibos='amiibos'></amiibo-list>
+</div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {eventBus} from './main.js';
+import AmiiboList from './components/AmiiboList.vue';
 
 export default {
-  name: 'App',
+  name: 'app',
+  data(){
+    return{
+      amiibos: [],
+      selectedAmiibo:null,
+
+    };
+  },
+  mounted(){
+    fetch('https://www.amiiboapi.com/api/amiibo/')
+    .then(res => res.json())
+    .then(data => this.amiibos = data)
+  },
   components: {
-    HelloWorld
+    "amiibo-list": AmiiboList
   }
-}
+
+
+  }
+
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>
