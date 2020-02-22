@@ -2,7 +2,9 @@
   <div>
     <h1>Amiibo catalog</h1>
     <p>Amiibos you own</p>
-
+<ul>
+  <li v-for="(amiibo, index) in this.ownedAmiibo" :key='index'>{{amiibo.name}}</li>
+</ul>
     <amiibo-list :amiibos='amiibos' :ownedAmiibo='ownedAmiibo'></amiibo-list>
   </div>
 
