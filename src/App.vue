@@ -2,8 +2,8 @@
   <div>
     <h1>Amiibo catalog</h1>
     <p>Amiibos you own</p>
-    <!-- <SingleAmiibo :ownedAmiibo='ownedAmiibo'></SingleAmiibo> -->
-    <amiibo-list :amiibos='amiibos'></amiibo-list>
+
+    <amiibo-list :amiibos='amiibos' :ownedAmiibo='ownedAmiibo'></amiibo-list>
   </div>
 
 </div>
@@ -12,7 +12,7 @@
 <script>
 import {eventBus} from './main.js';
 import AmiiboList from './components/AmiiboList.vue';
-import SingleAmiibo from './components/listItem.vue';
+// import SingleAmiibo from './components/listItem.vue';
 
 export default {
   name: 'app',
@@ -29,12 +29,13 @@ export default {
     .then(res => res.json())
     .then(data => this.amiibos = data)
 
-    // eventBus.$on('addToOwned', (amiibo) =>{
-    //   this.ownedAmiibo.push(amiibo);
+    eventBus.$on('addToOwned', (amiibo) =>{
+      this.ownedAmiibo.push(amiibo);
+    });
   },
   components: {
-    "amiibo-list": AmiiboList,
-    "single-amiibo": SingleAmiibo
+    "amiibo-list": AmiiboList
+    // "single-amiibo": SingleAmiibo
   }
 }
 

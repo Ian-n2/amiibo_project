@@ -6,7 +6,7 @@
 
     </select> -->
   <ul>
-    <single-amiibo v-for="( amiibo,index) in amiibos.amiibo" :amiibo='amiibo' :key='index'></single-amiibo>
+    <single-amiibo v-for="( amiibo,index) in amiibos.amiibo" :amiibo='amiibo' :ownedAmiibo='ownedAmiibo' :key='index'></single-amiibo>
   </ul>
 
 
@@ -23,7 +23,8 @@ export default {
       selectedAmiibo:[]
     }
   },
-  props: ['amiibos'],
+  props: ['amiibos', 'ownedAmiibo'],
+
   components:{
     'single-amiibo':listItem
   },
