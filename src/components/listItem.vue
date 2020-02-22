@@ -2,7 +2,7 @@
   <div id="amiiboDetail">
     <div>
        <h2>{{amiibo.name}}</h2>
-       <p>{{amiibo.type}}</p>
+       <p>{{amiibo.amiiboSeries}}</p>
        <img :src="amiibo.image">
 <br>
 <div v-if="!ownedAmiibo.includes(amiibo)" >
@@ -38,6 +38,8 @@ export default {
 img{
   height: 160px;
   width: 100px;
+  border-color: red;
+
 }
 
 #amiiboDetail{
