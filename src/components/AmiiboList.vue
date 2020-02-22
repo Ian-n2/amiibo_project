@@ -6,7 +6,7 @@
 
     </select> -->
   <ul>
-    <single-amiibo v-for="( amiibo,index) in amiibos.amiibo" :amiibo='amiibo' :ownedAmiibo='ownedAmiibo' :key='index'></single-amiibo>
+    <single-amiibo v-for="( amiibo,index) in amiibos" :amiibo='amiibo' :ownedAmiibo='ownedAmiibo' :key='index'></single-amiibo>
   </ul>
 
 
