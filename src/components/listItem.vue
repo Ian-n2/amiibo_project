@@ -4,9 +4,14 @@
        <h2>{{amiibo.name}}</h2>
        <p>{{amiibo.type}}</p>
        <img :src="amiibo.image">
+<br>
+<!-- <div v-if="!ownedAmiibo.includes(this.amiibo)"> -->
+<!--
+<button type="submit" v-on:click='handleClick'
+:value='amiibo' name='ownedAmiibo'>own</button> -->
+      <!-- </div> -->
 
-      </div>
-
+    </div>
 
 
   </div>
@@ -16,7 +21,12 @@
 import{eventBus} from '../main.js'
 export default {
   name: 'single-amiibo',
-  props:["amiibo"]
+  props:["amiibo"],
+  methods:{
+    handleClick(){
+      eventBus.$emit('addToOwned', this.amiibo)
+    }
+  }
 
     }
 
@@ -32,5 +42,6 @@ img{
 #amiiboDetail{
   margin: 30px;
   display: inline-block;
+  text-align: center;
 }
 </style>
